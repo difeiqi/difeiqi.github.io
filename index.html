@@ -3,60 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网站标题</title>
-    <style>
-        /* 重置默认样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    <title>基金研究与分析 - 专业的基金投资指南</title>
+    <meta name="description" content="专注于基金研究与分析的个人网站，提供专业的基金投资指南和市场洞察">
+    <!-- TailwindCSS 通过CDN引入 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind主题 -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
         }
-
-        /* 底部备案信息样式 */
-        .footer-beian {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            text-align: center;
-            padding: 20px 0;
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .footer-beian a {
-            color: #666;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-beian a:hover {
-            color: #333;
-            text-decoration: underline;
-        }
-
-        /* 页面内容样式（示例） */
-        .content {
-            min-height: 100vh;
-            padding: 20px;
+    </script>
+    <!-- 自定义样式 -->
+    <style type="text/tailwindcss">
+        @layer components {
+            .btn {
+                @apply px-4 py-2 rounded-lg transition-all duration-200 font-medium;
+            }
+            .btn-primary {
+                @apply bg-primary-600 text-white hover:bg-primary-700 hover:scale-105;
+            }
+            .card {
+                @apply bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700;
+            }
+            .nav-link {
+                @apply px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200;
+            }
+            .nav-link-active {
+                @apply text-primary-600 dark:text-primary-400 font-medium;
+            }
         }
     </style>
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <!-- 网站内容 -->
-    <div class="content">
-        <h1>欢迎来到我的网站</h1>
-        <p>网站主要内容...</p>
-    </div>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-300">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo和网站名称 -->
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-primary-600 dark:text-primary-400 text-2xl"></i>
+                    <span class="text-xl font-bold">基金研究</span>
+                </div>
+                
+                <!-- 导航链接 - 桌面版 -->
+                <nav class="hidden md:flex items-center space-x-1">
+                    <a href="index.html" class="nav-link nav-link-active">首页</a>
+                    <a href="articles.html" class="nav-link">文章</a>
+                    <a href="about.html" class="nav-link">关于我</a>
+                </nav>
+                
+                <!-- 深色模式切换和移动端菜单按钮 -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
+                        <i class="fas fa-moon text-blue-300 hidden dark:inline"></i>
+                    </button>
+                    
+                    <!-- 移动端菜单按钮 -->
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 移动端导航菜单 -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <nav class="flex flex-col space-y-2">
+                    <a href="index.html" class="nav-link nav-link-active">首页</a>
+                    <a href="articles.html" class="nav-link">文章</a>
+                    <a href="about.html" class="nav-link">关于我</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-    <!-- 备案信息 -->
-    <div class="footer-beian">
-        <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">
-            沪ICP备2024044403号-2  <!-- 请替换为您的实际备案号 -->
-        </a>
-    </div>
+    <main class="flex-grow">
+        <!-- 英雄区域 -->
+        <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-primary-50 dark:from-gray-800 dark:to-gray-900">
+            <div class="container mx-auto max-w-5xl">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">专业的基金投资指南</h1>
+                    <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">深入分析市场趋势，精选优质基金，助您实现财富增长</p>
+                    <div class="mt-8 flex justify-center space-x-4">
+                        <a href="articles.html" class="btn btn-primary">浏览文章</a>
+                        <a href="about.html" class="btn bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 hover:scale-105">了解更多</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 精选文章区域 -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-3xl font-bold mb-12 text-center">精选文章</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 文章卡片 1 -->
+                    <article class="card group">
+                        <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                            <div class="w-full h-48 bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
+                                <i class="fas fa-chart-pie text-5xl text-primary-500 dark:text-primary-400"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                                <a href="#">如何选择适合自己的基金产品</a>
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">深入分析不同类型基金的特点，帮助您根据自身风险偏好和投资目标选择合适的基金产品。</p>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-500">
+                                <span><i class="far fa-calendar-alt mr-1"></i> 2023-05-15</span>
+                                <span class="mx-2">•</span>
+                                <span><i class="far fa-eye mr-1"></i> 2,345</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- 文章卡片 2 -->
+                    <article class="card group">
+                        <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                            <div class="w-full h-48 bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
+                                <i class="fas fa-user-tie text-5xl text-primary-500 dark:text-primary-400"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                                <a href="#">优秀基金经理的共同特质</a>
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">研究表现优异的基金经理背后的投资理念和方法论，揭示他们成功的关键因素。</p>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-500">
+                                <span><i class="far fa-calendar-alt mr-1"></i> 2023-06-22</span>
+                                <span class="mx-2">•</span>
+                                <span><i class="far fa-eye mr-1"></i> 1,876</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- 文章卡片 3 -->
+                    <article class="card group">
+                        <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                            <div class="w-full h-48 bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
+                                <i class="fas fa-balance-scale text-5xl text-primary-500 dark:text-primary-400"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                                <a href="#">基金投资中的风险管理策略</a>
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">探讨基金投资中常见的风险类型及有效的风险管理方法，帮助投资者构建更稳健的投资组合。</p>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-500">
+                                <span><i class="far fa-calendar-alt mr-1"></i> 2023-07-08</span>
+                                <span class="mx-2">•</span>
+                                <span><i class="far fa-eye mr-1"></i> 1,543</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="articles.html" class="btn btn-primary">查看更多文章</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我区域 -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+            <div class="container mx-auto max-w-5xl">
+                <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                    <div class="mb-8 md:mb-0 md:w-1/3">
+                        <div class="w-48 h-48 mx-auto rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
+                            <i class="fas fa-user text-6xl text-primary-500 dark:text-primary-400"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-2/3">
+                        <h2 class="text-3xl font-bold mb-6">关于我</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
+                            我是一位专注于基金研究与分析的微信公众号博主，致力于为投资者提供专业、客观的基金投资指南。
+                            通过深入研究市场趋势和基金表现，我希望帮助更多人实现财富增长和财务自由。
+                        </p>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
+                            我的公众号定期发布基金分析报告、基金经理访谈以及投资策略指南，欢迎关注获取最新内容。
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <a href="about.html" class="btn btn-primary">了解更多</a>
+                            <a href="#" class="flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400">
+                                <i class="fab fa-weixin text-2xl mr-2"></i>
+                                <span>关注公众号</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto max-w-5xl">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-chart-line text-primary-600 dark:text-primary-400 text-xl"></i>
+                        <span class="text-lg font-bold">基金研究</span>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">专注于基金研究与分析的个人网站</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400">
+                            <i class="fab fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400">
+                            <i class="fab fa-zhihu text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">&copy; 2023 基金研究. 保留所有权利.</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2"><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" class="hover:text-primary-600 dark:hover:text-primary-400">沪ICP备2024044403号-2</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 深色模式切换
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // 检查系统偏好和本地存储
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+        
+        // 移动端菜单切换
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 添加页面加载动画
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('opacity-0');
+            setTimeout(() => {
+                document.body.classList.remove('opacity-0');
+                document.body.classList.add('transition-opacity', 'duration-500', 'opacity-100');
+            }, 100);
+        });
+    </script>
 </body>
 </html>

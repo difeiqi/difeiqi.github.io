@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 - 基金研究与分析</title>
+    <meta name="description" content="专注于基金研究与分析的个人网站，提供专业的基金投资指南和市场洞察">
+    <!-- TailwindCSS 通过CDN引入 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind主题 -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <!-- 自定义样式 -->
+    <style type="text/tailwindcss">
+        @layer components {
+            .btn {
+                @apply px-4 py-2 rounded-lg transition-all duration-200 font-medium;
+            }
+            .btn-primary {
+                @apply bg-primary-600 text-white hover:bg-primary-700 hover:scale-105;
+            }
+            .card {
+                @apply bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700;
+            }
+            .nav-link {
+                @apply px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200;
+            }
+            .nav-link-active {
+                @apply text-primary-600 dark:text-primary-400 font-medium;
+            }
+        }
+    </style>
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-300">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo和网站名称 -->
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-primary-600 dark:text-primary-400 text-2xl"></i>
+                    <span class="text-xl font-bold">基金研究</span>
+                </div>
+                
+                <!-- 导航链接 - 桌面版 -->
+                <nav class="hidden md:flex items-center space-x-1">
+                    <a href="index.html" class="nav-link">首页</a>
+                    <a href="articles.html" class="nav-link">文章</a>
+                    <a href="about.html" class="nav-link nav-link-active">关于我</a>
+                </nav>
+                
+                <!-- 深色模式切换和移动端菜单按钮 -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
+                        <i class="fas fa-moon text-blue-300 hidden dark:inline"></i>
+                    </button>
+                    
+                    <!-- 移动端菜单按钮 -->
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 移动端导航菜单 -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <nav class="flex flex-col space-y-2">
+                    <a href="index.html" class="nav-link">首页</a>
+                    <a href="articles.html" class="nav-link">文章</a>
+                    <a href="about.html" class="nav-link nav-link-active">关于我</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- 页面标题 -->
+        <section class="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-primary-50 dark:from-gray-800 dark:to-gray-900">
+            <div class="container mx-auto max-w-5xl">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-center">关于我</h1>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-center">专注于基金研究与分析的微信公众号博主</p>
+            </div>
+        </section>
+
+        <!-- 个人介绍 -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800">
+            <div class="container mx-auto max-w-5xl">
+                <div class="flex flex-col md:flex-row items-center md:items-start md:space-x-12">
+                    <div class="mb-8 md:mb-0 md:w-1/3 flex justify-center">
+                        <div class="w-64 h-64 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center overflow-hidden">
+                            <i class="fas fa-user-tie text-8xl text-primary-500 dark:text-primary-400"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-2/3">
+                        <h2 class="text-2xl font-bold mb-6">我的故事</h2>
+                        <div class="prose prose-lg dark:prose-invert max-w-none">
+                            <p class="mb-4">您好，我是一位专注于基金研究与分析的微信公众号博主。拥有多年金融行业从业经验，对基金市场有着深入的研究和独到的见解。</p>
+                            <p class="mb-4">我的职业生涯始于大型金融机构的投资分析部门，后来逐渐将重心转向了基金研究领域。多年来，我一直致力于为普通投资者提供专业、客观的基金投资指南，帮助他们在复杂的金融市场中做出明智的投资决策。</p>
+                            <p class="mb-4">我相信，优质的基金投资不仅需要专业的知识和分析能力，更需要耐心和长期主义的投资理念。通过我的公众号和个人网站，我希望能够将这些理念传递给更多的投资者，帮助他们实现财富的稳健增长。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 专业背景 -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-2xl font-bold mb-10 text-center">专业背景</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 教育背景 -->
+                    <div class="card p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-2xl text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">教育背景</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex">
+                                <div class="mr-4 text-gray-400">2010 - 2014</div>
+                                <div>
+                                    <div class="font-medium">金融学学士</div>
+                                    <div class="text-gray-600 dark:text-gray-400">北京大学</div>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="mr-4 text-gray-400">2014 - 2016</div>
+                                <div>
+                                    <div class="font-medium">金融工程硕士</div>
+                                    <div class="text-gray-600 dark:text-gray-400">清华大学</div>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="mr-4 text-gray-400">2018</div>
+                                <div>
+                                    <div class="font-medium">特许金融分析师 (CFA)</div>
+                                    <div class="text-gray-600 dark:text-gray-400">CFA协会</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 工作经历 -->
+                    <div class="card p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-4">
+                                <i class="fas fa-briefcase text-2xl text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">工作经历</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex">
+                                <div class="mr-4 text-gray-400">2016 - 2019</div>
+                                <div>
+                                    <div class="font-medium">投资分析师</div>
+                                    <div class="text-gray-600 dark:text-gray-400">某大型证券公司</div>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="mr-4 text-gray-400">2019 - 2021</div>
+                                <div>
+                                    <div class="font-medium">基金研究员</div>
+                                    <div class="text-gray-600 dark:text-gray-400">某知名基金管理公司</div>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="mr-4 text-gray-400">2021 - 至今</div>
+                                <div>
+                                    <div class="font-medium">独立基金分析师</div>
+                                    <div class="text-gray-600 dark:text-gray-400">自由撰稿人 & 公众号博主</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 我的公众号 -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-2xl font-bold mb-10 text-center">我的公众号</h2>
+                
+                <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                    <div class="mb-8 md:mb-0 md:w-1/3 flex justify-center">
+                        <div class="w-64 h-64 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                            <i class="fab fa-weixin text-8xl text-green-500"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-2/3">
+                        <h3 class="text-xl font-bold mb-4">「基金研究」公众号</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">我的公众号「基金研究」专注于提供高质量的基金分析内容，包括：</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 dark:text-primary-400 mt-1 mr-2"></i>
+                                <span>深度基金分析报告，挖掘优质基金产品</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 dark:text-primary-400 mt-1 mr-2"></i>
+                                <span>基金经理访谈与研究，了解投资背后的思考</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 dark:text-primary-400 mt-1 mr-2"></i>
+                                <span>市场趋势分析，把握投资机会</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 dark:text-primary-400 mt-1 mr-2"></i>
+                                <span>投资策略指南，提升投资技能</span>
+                            </li>
+                        </ul>
+                        <div class="flex items-center">
+                            <a href="#" class="btn btn-primary flex items-center">
+                                <i class="fab fa-weixin mr-2"></i>
+                                <span>扫码关注</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我 -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-2xl font-bold mb-10 text-center">联系我</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 邮箱 -->
+                    <div class="card p-6 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-4">
+                            <i class="fas fa-envelope text-2xl text-primary-600 dark:text-primary-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">电子邮件</h3>
+                        <p class="text-gray-600 dark:text-gray-400">contact@fundresearch.com</p>
+                    </div>
+                    
+                    <!-- 微信 -->
+                    <div class="card p-6 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-4">
+                            <i class="fab fa-weixin text-2xl text-primary-600 dark:text-primary-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">微信公众号</h3>
+                        <p class="text-gray-600 dark:text-gray-400">基金研究</p>
+                    </div>
+                    
+                    <!-- 知乎 -->
+                    <div class="card p-6 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-4">
+                            <i class="fab fa-zhihu text-2xl text-primary-600 dark:text-primary-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">知乎</h3>
+                        <p class="text-gray-600 dark:text-gray-400">@基金研究</p>
+                    </div>
+                </div>
+                
+                <!-- 留言表单 -->
+                <div class="mt-12 card p-8">
+                    <h3 class="text-xl font-bold mb-6 text-center">给我留言</h3>
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">姓名</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">邮箱</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">主题</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">留言内容</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">发送留言</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto max-w-5xl">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-chart-line text-primary-600 dark:text-primary-400 text-xl"></i>
+                        <span class="text-lg font-bold">基金研究</span>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">专注于基金研究与分析的个人网站</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400">
+                            <i class="fab fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400">
+                            <i class="fab fa-zhihu text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">&copy; 2023 基金研究. 保留所有权利.</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2"><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" class="hover:text-primary-600 dark:hover:text-primary-400">沪ICP备2024044403号-2</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 深色模式切换
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // 检查系统偏好和本地存储
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+        
+        // 移动端菜单切换
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 添加页面加载动画
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('opacity-0');
+            setTimeout(() => {
+                document.body.classList.remove('opacity-0');
+                document.body.classList.add('transition-opacity', 'duration-500', 'opacity-100');
+            }, 100);
+        });
+    </script>
+</body>
+</html>
